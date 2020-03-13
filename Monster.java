@@ -1,6 +1,5 @@
 
 public abstract class Monster extends DungeonCharacter{
-<<<<<<< HEAD
 	protected double chanceToHeal;
 	protected int healMin, healMax;
 	public Monster (Ability[] flyweightRef,int hitPoints, String name, int damageMin, int damageMax, int attackSpeed, double chanceToHit
@@ -24,12 +23,5 @@ public abstract class Monster extends DungeonCharacter{
 	}
 	
 	
-=======
-
-	public Monster(Attack[] flyeightRef) {
-		super(flyeightRef);
-		
-	}
->>>>>>> 8cba00e4a3c5bc9143e4bc2b89f5cd9ec63f2269
 	
 }

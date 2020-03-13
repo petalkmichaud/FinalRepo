@@ -1,15 +1,8 @@
 
-<<<<<<< HEAD
 public abstract class DungeonCharacter  {
 	Ability[] flyweightReference;
 	protected Ability regularAttack;
 	protected Ability ability;
-=======
-public abstract class DungeonCharacter {
-	Attack[] flyweightReference;
-	protected Attack attack;
-	protected Attack ability;
->>>>>>> 8cba00e4a3c5bc9143e4bc2b89f5cd9ec63f2269
 	protected String name;
 	protected int hitPoints;
 	protected int attackSpeed;
@@ -17,7 +10,6 @@ public abstract class DungeonCharacter {
 	protected int damageMin, damageMax;
 	
 	
-<<<<<<< HEAD
 	public DungeonCharacter(Ability[] flyweightRef,int hitPoints, String name, int damageMin, int damageMax, int attackSpeed, double chanceToHit) {
 		this.flyweightReference = flyweightRef;
 		this.regularAttack = flyweightReference[1];
@@ -27,17 +19,12 @@ public abstract class DungeonCharacter {
 		this.damageMax = damageMax;
 		this.attackSpeed = attackSpeed;
 		this.chanceToHit = chanceToHit;
-=======
-	public DungeonCharacter(Attack[] flyweightRef) {
-		this.flyweightReference = flyweightRef;
->>>>>>> 8cba00e4a3c5bc9143e4bc2b89f5cd9ec63f2269
 	
 	}
 	
 	
 	
 	
-<<<<<<< HEAD
 	
 	public void attack(DungeonCharacter opponent) {
 		
@@ -59,11 +46,6 @@ public abstract class DungeonCharacter {
 		
 	
 	public abstract void specialAttack(DungeonCharacter opponent);
-=======
-	public abstract void attack(DungeonCharacter opponent);
-	
-	public abstract void specialAttack();
->>>>>>> 8cba00e4a3c5bc9143e4bc2b89f5cd9ec63f2269
 	
 	public void subtractHitPoints(int hitPoints)
 	{
@@ -75,11 +57,7 @@ public abstract class DungeonCharacter {
 			if (this.hitPoints < 0)
 				this.hitPoints = 0;
 			System.out.println(getName() + " hit " +
-<<<<<<< HEAD
 								"for <" + hitPoints + "> points damage.");
-=======
-								" for <" + hitPoints + "> points damage.");
->>>>>>> 8cba00e4a3c5bc9143e4bc2b89f5cd9ec63f2269
 			System.out.println(getName() + " now has " +
 								getHitPoints() + " hit points remaining.");
 			System.out.println();
@@ -95,7 +73,6 @@ public abstract class DungeonCharacter {
 	public String getName() {
 		return this.name;
 	}
-<<<<<<< HEAD
 	public void addHitPoints(int hitPoints){
 		if (hitPoints <=0)
 			System.out.println("Hitpoint amount must be positive.");
@@ -103,6 +80,4 @@ public abstract class DungeonCharacter {
 			this.hitPoints += hitPoints;
 		}
 	}
-=======
->>>>>>> 8cba00e4a3c5bc9143e4bc2b89f5cd9ec63f2269
 }
