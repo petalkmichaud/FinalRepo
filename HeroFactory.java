@@ -1,32 +1,36 @@
-public class HeroFactory
-{
-	public GameCharacter createSorceress(String name)
+public class HeroFactory{
+	private Ability[] flyweightRef;
+	public HeroFactory(Ability[] flyweightRef) {
+		this.flyweightRef = flyweightRef;
+		
+	}
+	public GameCharacter createSorceress()
 	{
-		return new Sorceress(null);
+		return new Sorceress(this.flyweightRef);
 		
 	}//end createSorceress
 	
-	public GameCharacter createWarrior(String name)
+	public GameCharacter createWarrior()
 	{
-		return new Warrior(null);
+		return new Warrior(this.flyweightRef);
 		
 	}//end createWarrior
 	
-	public GameCharacter createThief(String name)
+	public GameCharacter createThief()
 	{
-		return new Thief(null);
+		return new Thief(this.flyweightRef);
 		
 	}//end createThief
 	
-	public GameCharacter createCleric(String name)
+	public GameCharacter createCleric()
 	{
-		return new Cleric(null);
+		return new Cleric(this.flyweightRef);
 		
 	}//end createCleric
 	
-	public GameCharacter createRanger(String name)
+	public GameCharacter createRanger()
 	{
-		return new Ranger(null);
+		return new Ranger(this.flyweightRef);
 		
 	}//end createRanger
 }
