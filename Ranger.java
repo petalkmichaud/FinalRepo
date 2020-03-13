@@ -1,9 +1,11 @@
-import java.util.Scanner;
 
-public class Ranger extends Hero {
-	public Ranger(Ability[] flyweightRef) {
-		super(flyweightRef, 200, "Ranger", 10, 30, 4, .5, 0.3);
-		this.ability = this.flyweightReference[0];
-	}
+public class Ranger extends Hero
+{
+	public Ranger(Ability[] flyweightRef)
+	{
+		super(flyweightRef, "Ranger", 95, 6, .85, 30, 50, .35);
+		this.setAbility(flyweightRef[1]);
 	
-}
+	}//end constructor
+	
+}//Ranger class

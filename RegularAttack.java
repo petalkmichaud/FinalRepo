@@ -8,7 +8,7 @@ public class RegularAttack implements Ability {
 	}
 
 	@Override
-	public void doAbility(DungeonCharacter opponent) {
+	public void doAbility(GameCharacter opponent) {
 		
 		
 	}

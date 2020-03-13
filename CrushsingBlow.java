@@ -7,7 +7,7 @@ public class CrushsingBlow implements Ability {
 	}
 
 	@Override
-	public void doAbility(DungeonCharacter opponent) {
+	public void doAbility(GameCharacter opponent) {
 		
 		
 		if(Math.random() >= chanceToHit) {
@@ -20,4 +20,5 @@ public class CrushsingBlow implements Ability {
 		
 		
 	}
+
 }
