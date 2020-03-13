@@ -1,9 +1,9 @@
 public class Skeleton extends Monster
 {
 
-    public Skeleton()
+    public Skeleton(Ability[] flyweightRef)
 	{
-		super("Sargath the Skeleton", 100, 3, .8, .3, 30, 50, 30, 50);
+		super(flyweightRef, "Sargath the Skeleton", 100, 3, .8, .3, 30, 50, 30, 50);
 
     }//end constructor
 

@@ -1,9 +1,9 @@
 public class Drake extends Monster
 {
 
-    public Drake()
+    public Drake(Ability[] flyweightRef)
 	{
-		super("Stu the Drake", 240, 2, .8, .4, 25, 60, 30, 50);
+		super(flyweightRef, "Stu the Drake", 240, 2, .8, .4, 25, 60, 30, 50);
 
     }//end MindFlayer
 

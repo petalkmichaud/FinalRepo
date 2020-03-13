@@ -1,16 +1,20 @@
 
 public abstract class GameCharacter
 {
+	private Ability[] flyweightReference;
+	private Ability regularAttack;
+	protected Ability ability; //Maybe make this private later?
 	private String name;
 	private int hitPoints;
 	private int attackSpeed;
 	private double chanceToHit;
 	private int damageMin, damageMax;
 
-	public GameCharacter(String name, int hitPoints, int attackSpeed,
+	public GameCharacter(Ability[] flyweightRef, String name, int hitPoints, int attackSpeed,
 				     double chanceToHit, int damageMin, int damageMax)
 	{
-
+		this.flyweightReference = flyweightRef;
+		this.regularAttack = flyweightReference[1];
 		this.name = name;
 		this.hitPoints = hitPoints;
 		this.attackSpeed = attackSpeed;
@@ -95,30 +99,23 @@ public abstract class GameCharacter
 	  return (hitPoints > 0);
 	}//end isAlive method
 
-	/*public void attack(DungeonCharacter opponent)
-	{
+    public void attack(GameCharacter opponent)
+    {
 		boolean canAttack;
 		int damage;
-
 		canAttack = Math.random() <= chanceToHit;
-
-		if (canAttack)
-		{
-			damage = (int)(Math.random() * (damageMax - damageMin + 1))
-						+ damageMin ;
+		
+		if (canAttack) {
+			damage = (int)(Math.random() * (damageMax - damageMin + 1)) + damageMin ;
 			opponent.subtractHitPoints(damage);
-
-
-
 			System.out.println();
-		}//end if can attack
-		else
-		{
-
-			System.out.println(getName() + "'s attack on " + opponent.getName() +
-								" failed!");
+		}
+		else{
+			System.out.println(getName() + "'s attack on " + opponent.getName() + " failed!");
 			System.out.println();
 		}//end else
 
-	}//end attack method*/
+	}//end attack method
+    
+    public abstract void specialAttack(GameCharacter opponent);
 }

@@ -1,21 +1,28 @@
-public abstract class Monster extends GameCharacter implements Ability
+public abstract class Monster extends GameCharacter //implements Ability
 {
 	private double chanceToHeal;
 	private int minHeal, maxHeal;
 
-	public Monster(String name, int hitPoints, int attackSpeed,
+	public Monster(Ability[] flyweightRef, String name, int hitPoints, int attackSpeed,
 				     double chanceToHit, double chanceToHeal,
 					 int damageMin, int damageMax,
 					 int minHeal, int maxHeal)
 	{
-		super(name, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax);
+		super(flyweightRef, name, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax);
 		this.chanceToHeal = chanceToHeal;
 		this.maxHeal = maxHeal;
 		this.minHeal = minHeal;
 
 	}//end Monster
+	
+	public void specialAttack(GameCharacter thisMonster)
+	{
+		System.out.println(this.getName());
+		this.ability.doAbility((Monster)thisMonster);
+		
+	}//end specialAttack
 
-	public void heal()
+	/* public void heal()
   	{
 		boolean canHeal;
 		int healPoints;
@@ -58,12 +65,12 @@ public abstract class Monster extends GameCharacter implements Ability
 			System.out.println();
 		}//end else
 
-	}//end attack method
+	}//end attack method */
 	  
 	public void subtractHitPoints(int hitPoints)
 	{
 		super.subtractHitPoints(hitPoints);
-		heal();
+		specialAttack(this);
 	
 	}//end method
 

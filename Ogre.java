@@ -1,9 +1,9 @@
 public class Ogre extends Monster
 {
 
-    public Ogre()
+    public Ogre(Ability[] flyweightRef)
 	{
-		super("Oscar the Ogre", 200, 2, .6, .1, 30, 50, 30, 50);
+		super(flyweightRef, "Oscar the Ogre", 200, 2, .6, .1, 30, 50, 30, 50);
 
     }//end constructor
 

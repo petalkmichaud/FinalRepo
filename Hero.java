@@ -1,22 +1,39 @@
-public abstract class Hero extends GameCharacter implements Ability
+import java.util.Scanner;
+
+public abstract class Hero extends GameCharacter// implements Ability
 {
 	private double chanceToBlock;
 	private int numTurns;
+	Ability[] flyweightReference;
 
-	public Hero(String name, int hitPoints, int attackSpeed,
+	public Hero(Ability[] flyweightRef, String name, int hitPoints, int attackSpeed,
 				     double chanceToHit, int damageMin, int damageMax,
 					 double chanceToBlock)
   	{
-		super(name, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax);
+		super(flyweightRef, name, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax);
 		this.chanceToBlock = chanceToBlock;
 		//readName();
   	}
+	
+	public static String setName()
+	{
+		Scanner input = new Scanner(System.in);
+		System.out.println("Please enter name: ");
+		return input.nextLine();
+	}
 
   	public boolean defend()
   	{
   		return Math.random() <= chanceToBlock;
 
   	}//end defend method
+  	
+  	public void specialAttack(GameCharacter opponent)
+  	{
+		System.out.print(this.getName());
+		this.ability.doAbility(opponent);
+		
+	}
 
   	public void subtractHitPoints(int hitPoints)
 	{

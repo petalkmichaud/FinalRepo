@@ -1,9 +1,9 @@
 public class MindFlayer extends Monster
 {
 
-    public MindFlayer()
+    public MindFlayer(Ability[] flyweightRef)
 	{
-		super("Tom the MindFlayer", 125, 5, .85, .3, 35, 65, 20, 40);
+		super(flyweightRef, "Tom the MindFlayer", 125, 5, .85, .3, 35, 65, 20, 40);
 
     }//end MindFlayer
 
