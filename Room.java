@@ -4,7 +4,7 @@ public abstract class Room {
 	
 	protected boolean north,south,east,west;
 	
-	protected double monsterChance = .2;
+	protected double monsterChance;
 	
 	protected double roomConstant = .1;
 	protected double pitChance = roomConstant;
@@ -31,12 +31,6 @@ public abstract class Room {
 			this.pit = getPit();
 			this.healingPotionCount = getHealingPotion();
 			this.visionPotionCount = getVisionPotion();
-			
-			
-			if(monsterChance <= Math.random()) {
-				this.monsterC = generateMonster();
-				this.monsterCount = 1;
-			}
 			
 			
 		}
@@ -119,8 +113,9 @@ public abstract class Room {
 			}
 			else return false;
 		}
+		
 		public boolean isExit() {
-			if(this.entrance > 0) {
+			if(this.exit > 0) {
 				return true;
 			}
 			else return false;
@@ -144,7 +139,22 @@ public abstract class Room {
 			}
 			
 			if((monsterCount + pit + healingPotionCount + visionPotionCount) == 0) {
+				
+				if(this.isExit()) {
+					room = room + "O";
+				}
+				else if(this.isEntrance()) {
+					room = room + "I";
+				}
+				
+				else
+				{
+				
 				room = room + "E";
+				}
+				
+				
+				
 			}
 			else if((monsterCount + pit + healingPotionCount + visionPotionCount) > 1) {
 				room = room + "M";
@@ -152,12 +162,8 @@ public abstract class Room {
 			else if(pit == 1) {
 				room = room + "P";
 			}
-			else if (entrance == 1) {
-				room = room + "I";
-			}
-			else if (exit == 1) {
-				room = room + "O";
-			}
+			
+			
 			else if(healingPotionCount >= 1) {
 				room = room + "H";
 			}
@@ -195,7 +201,7 @@ public abstract class Room {
 				roomStats += "True";
 			}
 			else {
-				roomStats += "Flase";
+				roomStats += "False";
 			}
 			roomStats += "\nVision Postion: " + visionPotionCount;
 			

@@ -1,6 +1,6 @@
 
 public class Tester {
-	public static void main(String args[]) {
+	//public static void main(String args[]) {
 		
 		
 	
@@ -9,16 +9,16 @@ public class Tester {
 		
 		
 	
-		Movement mov = new Movement();
+	//	Movement mov = new Movement();
 		
 		
-		Dungeon dungeon = new Dungeon(5,5);
+	//	Dungeon dungeon = new Dungeon(5,5);
 		
 		
-		dungeon.printRoom(0, 0);
+	//	dungeon.printRoom(0, 0);
 		
 		//.aeif.specialAttack(monster);
 		
-	}
+//	}
 	
 }

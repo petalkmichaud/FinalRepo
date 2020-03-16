@@ -47,10 +47,20 @@ public class Dungeon{
 		
 		this.heroFactory = (CharacterFactory) new HeroFactory(flyweight);
 		
-		dungeon[0][0] = new RegularRoom((MonsterFactory) monsterFactory, true, false, false, true);
 		
 		
-		//generateDungeon();
+	//	dungeon[0][0] = new RegularRoom((MonsterFactory) monsterFactory, true, false, false, true);
+		
+		int startX = getRandomX(maxX);
+		int startY = getRandomY(maxY);
+		PlocX = startX;
+		PlocY = startY;
+		
+		dungeon[startX][startY] = new EntranceRoom(true, true, true, true);
+		dungeon[2][4] = new ExitRoom(true, true, true, true);
+		dungeon[2][2] = new RegularRoom((MonsterFactory) monsterFactory, true, true, true,true);
+		dungeon[0][0] = new AbstractionPillarRoom((MonsterFactory) monsterFactory,true,true,true,true);
+		generateDungeon();
 	}
 	
 	
@@ -63,11 +73,13 @@ public class Dungeon{
 	}
 	
 	public void generateDungeon(){
-			int x = getRandomX(this.maxX);
-			int y = getRandomY(this.maxY);
-			
-			//dungeon[x][y] = entrance;
-			
+			for(int i = 0; i < maxX; i ++) {
+				for(int j = 0; j < maxY; j ++) {
+					if(dungeon[i][j] == null) {
+						dungeon[i][j] = new RegularRoom((MonsterFactory) monsterFactory, true, true, true, true);
+					}
+				}
+			}
 				
 	}	
 
@@ -112,7 +124,8 @@ public class Dungeon{
 		
 		String direction;
 		
-		
+		System.out.println("Player is at [" + PlocX + "]" + "[" + PlocY + "]");
+		printRoom(PlocX, PlocY);
 		while(true) {
 		System.out.println("Please enter a direction to move... w a s d");
 		direction = input.next();
@@ -138,8 +151,9 @@ public class Dungeon{
 			}
 		}
 		System.out.println("Player is at [" + PlocX + "]" + "[" + PlocY + "]");
-	
+		printRoom(PlocX, PlocY);
 		}
+		
 		
 		
 	}

@@ -5,6 +5,13 @@ public abstract class Hero extends GameCharacter// implements Ability
 	private double chanceToBlock;
 	private int numTurns;
 	Ability[] flyweightReference;
+	private int pillar1 = 0;
+	private int pillar2 = 0;
+	private int pillar3 = 0;
+	private int pillar4 = 0;
+	private int healingPotionCount;
+	private int visionPostionCount;
+	
 
 	public Hero(Ability[] flyweightRef, String name, int hitPoints, int attackSpeed,
 				     double chanceToHit, int damageMin, int damageMax,
@@ -52,9 +59,16 @@ public abstract class Hero extends GameCharacter// implements Ability
 		{
 			super.subtractHitPoints(hitPoints);
 		}
-
+	
 
 	}//end method
+  	
+  	public boolean canWin() {
+  		if((pillar1 + pillar2 + pillar3 + pillar4) == 4) {
+  			return true;
+  		}
+  		else return false;
+  	}
 
 	/*public void battleChoices(GameCharacter opponent)
 	{
