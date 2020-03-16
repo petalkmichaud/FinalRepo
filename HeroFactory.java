@@ -1,7 +1,8 @@
-public class HeroFactory{
-	private Ability[] flyweightRef;
+public class HeroFactory extends CharacterFactory{
+	
+	
 	public HeroFactory(Ability[] flyweightRef) {
-		this.flyweightRef = flyweightRef;
+		super(flyweightRef);
 		
 	}
 	public GameCharacter createSorceress()

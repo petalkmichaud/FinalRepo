@@ -12,7 +12,7 @@ public class SurpriseAttack implements Ability
 	
 	public void doAbility(GameCharacter opponent) 
 	{
-		System.out.println("Hello");
+		
 		//Method does not work, how to change to work with our structure?
 		double surprise = Math.random();
 		if (surprise <= thisChar.getChanceToHit())

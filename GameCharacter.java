@@ -5,7 +5,7 @@ public abstract class GameCharacter
 	public Ability[] getFlyweightReference() {
 		return flyweightReference;
 	}
-
+	
 	
 
 	private Ability regularAttack;
@@ -20,6 +20,7 @@ public abstract class GameCharacter
 				     double chanceToHit, int damageMin, int damageMax)
 	{
 		this.flyweightReference = flyweightRef;
+	
 		this.regularAttack = flyweightReference[1];
 		this.name = name;
 		this.hitPoints = hitPoints;
