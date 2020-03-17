@@ -80,6 +80,7 @@ public class Dungeon{
 					}
 				}
 			}
+			borderiseDungeon();
 				
 	}	
 
@@ -165,6 +166,28 @@ public class Dungeon{
 		System.out.println(dungeon[x][y].toString());
 		System.out.println(dungeon[x][y].roomStats());
 		
+	}
+	
+	public void borderiseDungeon() {
+		for(int i = 0; i < this.maxX; i ++) {
+		
+			
+			for(int j = 0; j < this.maxY; j++) {
+				if(i == 0) {
+					dungeon[0][j].west = false;
+				}
+				if(i == this.maxX -1 ) {
+					dungeon[maxY-1][j].east = false;
+				}
+				if(j == 0) {
+					dungeon[i][j].north = false;
+				}
+				if(j == this.maxY - 1) {
+					dungeon[i][j].south = false;  
+				}
+			}
+			
+		}
 	}
 	
 }
