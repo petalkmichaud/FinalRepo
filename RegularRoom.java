@@ -11,7 +11,7 @@ public class RegularRoom extends Room{
 			randomNum *= -1;
 		}
 		if(this.monsterChance > randomNum) {
-			this.monsterCount ++;
+			this.monsterCount = 1;
 			this.monsterC = this.generateMonster();
 		}
 		

@@ -66,7 +66,9 @@ public abstract class Room {
 			else {
 				//default monster
 				monster = (Monster) this.monsterFactory.createOgre();
+			
 			}
+			
 			return (Monster) monster;
 			
 		}
@@ -188,7 +190,7 @@ public abstract class Room {
 				room = room + "***";
 			}
 			else {
-				room = room + "*-*";
+				room = room + "*-*\n";
 			}
 			return room;
 		}
@@ -209,6 +211,7 @@ public abstract class Room {
 			
 			if(monsterCount > 0) {
 				roomStats += "True: " + monsterC.getName();
+				roomStats += "\n" +  this.monsterCount;
 
 			}
 			else {

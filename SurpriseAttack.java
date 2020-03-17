@@ -7,7 +7,7 @@ public class SurpriseAttack implements Ability
 	
 	public String getDisplay()
 	{
-		return null;
+		return "Surprise Attack";
 	}
 	
 	public void doAbility(GameCharacter opponent) 

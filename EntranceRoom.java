@@ -11,6 +11,7 @@ public class EntranceRoom extends Room {
 		this.exit = 0;
 		this.entrance = 1;
 		this.monsterChance = 0;
+		this.monsterCount = 0;
 	}
 	@Override
 	public String roomStats() {

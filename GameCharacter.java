@@ -168,6 +168,8 @@ public abstract class GameCharacter
 		}//end else
 
 	}//end attack method
-    
+    public String getAbilityName() {
+    	return ability.getDisplay();
+    }
     public abstract void specialAttack(GameCharacter opponent);
 }

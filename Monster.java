@@ -25,7 +25,7 @@ public abstract class Monster extends GameCharacter //implements Ability
 		this.maxHeal = maxHeal;
 	}
 
-
+	
 	private int minHeal, maxHeal;
 
 	public Monster(Ability[] flyweightRef, String name, int hitPoints, int attackSpeed,

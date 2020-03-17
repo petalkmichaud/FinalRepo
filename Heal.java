@@ -3,8 +3,8 @@ public class Heal implements Ability
 {
 	public String getDisplay()
 	{
-		return null;
-	}
+		return "Heal";
+		}
 	
 	public void doAbility(GameCharacter thisCharacter)
 	{
