@@ -7,13 +7,14 @@ public class DungeonAdventure {
 		flyweight[3] = new SurpriseAttack();
 		flyweight[2] = new Heal();
 		flyweight[1] = new CrushingBlow();
-		Hero hero = (Hero)selectHero(flyweight);
-		Dungeon dungeon = new Dungeon(5,5);
+		
 		
 		
 		boolean isPlaying = true;
 		
 		while(isPlaying) {
+			Hero hero = (Hero)selectHero(flyweight);
+			Dungeon dungeon = new Dungeon(5,5);
 			boolean heroIsAlive = true;
 			while(heroIsAlive) {
 				int x = dungeon.PlocX;

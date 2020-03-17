@@ -38,7 +38,8 @@ public abstract class Hero extends GameCharacter// implements Ability
   	public void specialAttack(GameCharacter opponent)
   	{
   		//System.out.println(opponent.toString());
-		System.out.print(this.getName());
+		if(this.isAlive()) {
+  		System.out.print(this.getName());
 		
 		
 		
@@ -48,6 +49,7 @@ public abstract class Hero extends GameCharacter// implements Ability
 		ability.doAbility(opponent);
 		
 	}
+  	}
 
   	public void subtractHitPoints(int hitPoints)
 	{
