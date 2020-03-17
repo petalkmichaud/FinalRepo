@@ -10,12 +10,16 @@ dungeon.*/
 
 import java.util.*;
 public class Dungeon{
+	
+	//Player Location
 	int PlocX, PlocY;
 	
+	
+	//dungeon dimensions
 	int maxX, maxY;
 	
-	int entranceX, entranceY;
-	int exitX, exitY;
+	//int entranceX, entranceY;
+//	int exitX, exitY;
 	
 	//private Room entrance = new Room();
 	//private Room exit = new Room();
@@ -55,6 +59,8 @@ public class Dungeon{
 		int startY = getRandomY(maxY);
 		PlocX = startX;
 		PlocY = startY;
+		
+		//hardcoded doors
 		
 		dungeon[startX][startY] = new EntranceRoom(true, true, true, true);
 		dungeon[2][4] = new ExitRoom(false, false, true, false);
