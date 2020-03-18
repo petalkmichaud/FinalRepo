@@ -11,11 +11,13 @@ public class CrushingBlow implements Ability
 
 	public void doAbility(GameCharacter opponent)
 	{
-		if(Math.random() >= chanceToHit) {
+		if(Math.random() >= chanceToHit)
+		{
 			System.out.println("has used CRUSHING BLOW on " + opponent.getName());
 			opponent.subtractHitPoints(damage);
 		}
-		else {
+		else
+		{
 			System.out.println(" MISSED crushing blow..");
 		}
 	}

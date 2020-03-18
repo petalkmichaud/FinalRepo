@@ -1,21 +1,22 @@
 
 public class SurpriseAttack implements Ability
 {
+	GameCharacter thisChar;
+	
 	public String getDisplay()
 	{
-		return null;
+		return " uses the special move surprise attack";
 	}
 	
 	public void doAbility(GameCharacter opponent) 
 	{
-		//Method does not work, how to change to work with our structure?
 		double surprise = Math.random();
-		if (surprise <= .4)
+		if (surprise <= thisChar.getChanceToHit())
 		{
 			System.out.println("Surprise attack was successful!\n" +
-								name + " gets an additional turn.");
-			numTurns++;
-			attack(opponent);
+								thisChar.getName() + " gets an additional turn.");
+			//numTurns++;
+			thisChar.attack(opponent);
 		}//end surprise
 		else if (surprise >= .9)
 		{
@@ -23,7 +24,7 @@ public class SurpriseAttack implements Ability
 								" blocked your attack!");
 		}
 		else
-		    attack(opponent);
+		    thisChar.attack(opponent);
 	}
 
 }

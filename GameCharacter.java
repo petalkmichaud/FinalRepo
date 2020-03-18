@@ -23,6 +23,12 @@ public abstract class GameCharacter
 		this.damageMax = damageMax;
 
 	}//end constructor
+	
+	public Ability[] getFlyweightReference()
+	{
+		return flyweightReference;
+		
+	}//end getFlyweightReference
 
 	public String getName()
 	{
@@ -116,6 +122,12 @@ public abstract class GameCharacter
 		}//end else
 
 	}//end attack method
+    
+    public String getAbilityName()
+    {
+    	return ability.getDisplay();
+    	
+    }//end getAbilityName
     
     public abstract void specialAttack(GameCharacter opponent);
 }

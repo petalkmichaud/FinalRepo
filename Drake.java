@@ -9,7 +9,7 @@ public class Drake extends Monster
 
 	public void attack(GameCharacter opponent)
 	{
-		System.out.println(super.getName() + " loudly roars in protest at " +
+		System.out.println(super.getName() + " lets out a sonic boom at " +
 							opponent.getName() + ":");
 		super.attack(opponent);
 

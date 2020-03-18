@@ -3,8 +3,9 @@ public class Heal implements Ability
 {
 	public String getDisplay()
 	{
-		return null;
-	}
+		return " uses the special move heal";
+		
+	}//end getDisplay
 	
 	public void doAbility(GameCharacter thisCharacter)
 	{
@@ -19,7 +20,7 @@ public class Heal implements Ability
 			thisHero.addHitPoints(hPoints);
 			System.out.println(" added [" + hPoints + "] points.\n"
 								+ "Total hit points remaining are: "
-								+ thisHero.hitPoints);
+								+ thisHero.getHitPoints());
 			 System.out.println();
 		}
 		else
@@ -28,18 +29,22 @@ public class Heal implements Ability
 			boolean canHeal;
 			int healPoints;
 
-			canHeal = (Math.random() <= thisMonster.chanceToHeal) && (thisMonster.hitPoints > 0);
+			canHeal = (Math.random() <= thisMonster.getChanceToHit()) && (thisMonster.getHitPoints() > 0);
 
 			if (canHeal)
 			{
-				healPoints = (int)(Math.random() * (thisMonster.maxHeal - thisMonster.minHeal + 1)) + thisMonster.minHeal;
+				healPoints = (int)(Math.random() * (thisMonster.getMaxHeal() - thisMonster.getMinHeal() + 1)) + thisMonster.getMinHeal();
 				thisMonster.addHitPoints(healPoints);
 				System.out.println(" healed itself for " + healPoints + " points.\n"
-									+ "Total hit points remaining are: " + thisMonster.hitPoints);
+									+ "Total hit points remaining are: " + thisMonster.getHitPoints());
 				System.out.println();
 			}
-			else {
+			else
+			{
 				System.out.println( " could not heal this round.");
 			}
 		}
-}
+		
+	}//end doAbility
+	
+}//end class

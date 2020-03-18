@@ -1,3 +1,4 @@
+
 public abstract class Monster extends GameCharacter //implements Ability
 {
 	private double chanceToHeal;
@@ -21,6 +22,42 @@ public abstract class Monster extends GameCharacter //implements Ability
 		this.ability.doAbility((Monster)thisMonster);
 		
 	}//end specialAttack
+	
+	public int getMaxHeal()
+	{
+		return this.maxHeal;
+		
+	}//end getMaxHeal
+	
+	public void setMaxHeal(int maxHeal)
+	{
+		this.maxHeal = maxHeal;
+		
+	}//end setMaxHeal
+	
+	public int getMinHeal()
+	{
+		return this.minHeal;
+		
+	}//end getMinHeal
+	
+	public void setMinHeal(int minHeal)
+	{
+		this.minHeal = minHeal;
+		
+	}//end setMinHeal
+	
+	public double getChanceToHeal()
+	{
+		return chanceToHeal;
+		
+	}//end getChanceToHeal
+
+	public void setChanceToHeal(double chanceToHeal)
+	{
+		this.chanceToHeal = chanceToHeal;
+		
+	}//end setChanceToHeal
 
 	/* public void heal()
   	{
@@ -72,6 +109,6 @@ public abstract class Monster extends GameCharacter //implements Ability
 		super.subtractHitPoints(hitPoints);
 		specialAttack(this);
 	
-	}//end method
+	}//end subtractHitPoints
 
 }//end Monster class
