@@ -1,50 +1,57 @@
+
 import java.util.*;
 
 public class Dungeon
 {
-	private int PlocX, PlocY;
+	//Player Location
+	int PlocX, PlocY;
 	
-	private int maxX, maxY;
+	//dungeon dimensions
+	int maxX, maxY;
 	
-	//private int entranceX, entranceY;
-	//private int exitX, exitY;
+	Ability[] flyweight;
 	
-	//private Room entrance = new Room();
-	//private Room exit = new Room();
-	
-	private Ability[] flyweight;
-	
-	private CharacterFactory heroFactory;
-	private CharacterFactory monsterFactory;
-	
+	CharacterFactory heroFactory;
+	CharacterFactory monsterFactory;
 	
 	private Room[][] dungeon;
+
+	protected GameCharacter hero;
+	protected int healPotions;
+	protected int visionPotions;
 	
 	public Dungeon(int dimensionX, int dimensionY)
 	{
 		this.maxX = dimensionX;
 		this.maxY = dimensionY;
 		
-		dungeon = new Room[dimensionX][dimensionY];
+		
+		this.dungeon = new Room[dimensionX][dimensionY];
 		this.flyweight = new Ability[5];
 		
-		this.flyweight[0] = new CrushingBlow();
+		
+		this.flyweight[0] = new CrushsingBlow();
 		this.flyweight[1] = new RegularAttack();
 		this.flyweight[2] = new Heal();
 		this.flyweight[3] = new SurpriseAttack();
 		
 		this.monsterFactory = new MonsterFactory(flyweight);
+		
 		this.heroFactory = (CharacterFactory) new HeroFactory(flyweight);
 		
-		//dungeon[0][0] = new RegularRoom((MonsterFactory) monsterFactory, true, false, false, true);
+		
+		
+	//	dungeon[0][0] = new RegularRoom((MonsterFactory) monsterFactory, true, false, false, true);
 		
 		int startX = getRandomX(maxX);
 		int startY = getRandomY(maxY);
-		PlocX = startX;
-		PlocY = startY;
+		this.PlocX = startX;
+		this.PlocY = startY;
+		
+		//hardcoded doors
 		
 		dungeon[startX][startY] = new EntranceRoom(true, true, true, true);
-		dungeon[2][4] = new ExitRoom(true, true, true, true);
+		dungeon[2][4] = new ExitRoom(false, false, true, false);
 		dungeon[0][0] = new RegularRoom((MonsterFactory) monsterFactory,false,false,true,false);
 		dungeon[1][0] = new RegularRoom((MonsterFactory) monsterFactory,false,true,false,true);
 		dungeon[2][0] = new RegularRoom((MonsterFactory) monsterFactory,false,true,true,false);
@@ -69,9 +76,6 @@ public class Dungeon
 		dungeon[1][4] = new RegularRoom((MonsterFactory) monsterFactory,true,false,false,false);
 		dungeon[3][4] = new RegularRoom((MonsterFactory) monsterFactory,false,false,true,true);
 		dungeon[4][4] = new RegularRoom((MonsterFactory) monsterFactory,true,false,false,true);
-		//dungeon[0][0] = new AbstractionPillarRoom((MonsterFactory) monsterFactory,true,true,true,true);
-		generateDungeon();
-		
 		
 		Room tempRoom = dungeon[startX][startY];
 		boolean tempN = tempRoom.north;
@@ -79,47 +83,44 @@ public class Dungeon
 		boolean tempE = tempRoom.east;
 		boolean tempW = tempRoom.west;
 		
-		dungeon[startX][startY] = new EntranceRoom(tempN,tempS,tempE,tempW);
+		this.dungeon[startX][startY] = new EntranceRoom(tempN,tempS,tempE,tempW);
 		
 		borderiseDungeon();
-	}//end Dungeon
+	}
 	
-	public String toString()
+	public void setDungeonHero(GameCharacter hero)
 	{
+		this.hero = hero;
+		
+	}//end setDungeonHero
+	
+	@Override
+	public String toString() {
 		String roomStats = "Size of dungeon is " +  this.maxX + " " + this.maxY;
+		
 		return roomStats;
 		
-	}//end toString
+	}
 	
 	public void generateDungeon()
 	{
-		for(int i = 0; i < maxX; i ++)
+		for(int i = 0; i < this.maxX; i ++)
 		{
-			for(int j = 0; j < maxY; j ++)
+			for(int j = 0; j < this.maxY; j ++)
 			{
-				if(dungeon[i][j] == null)
+				if(this.dungeon[i][j] == null)
 				{
-					dungeon[i][j] = new RegularRoom((MonsterFactory) monsterFactory, true, true, true, true);
+					this.dungeon[i][j] = new RegularRoom((MonsterFactory) this.monsterFactory, true, true, true, true);
 				}
 			}
 		}
-		
+		borderiseDungeon();
+				
 	}//end generateDungeon
-	
-	public int getPlocX()
-	{
-		return this.PlocX;
-		
-	}//end getPlocX
-	
-	public int getPlocY()
-	{
-		return this.PlocY;
-		
-	}//end getPlocY
 	
 	public int getRandomX(int max)
 	{
+
 		Random r = new Random();
 		
 		int x = r.nextInt((max - 0) + 1);
@@ -154,51 +155,100 @@ public class Dungeon
 		
 		String direction;
 		
-		System.out.println("Player is at [" + PlocX + "]" + "[" + PlocY + "]");
-		printRoom(PlocX, PlocY);
+		System.out.println("\nPlease enter a direction to move... w a s d (Then press enter)");
+		direction = input.next();
 		
-		while(true)
+		if(direction.equals("s"))
 		{
-			System.out.println("Please enter a direction to move... w a s d");
-			direction = input.next();
-			if(direction.equals("s"))
+			if(this.PlocY < this.maxX-1)
 			{
-				if(PlocY < this.maxX-1)
+				if(this.dungeon[PlocX][PlocY].south == true && (this.dungeon[PlocX][PlocY + 1].north == true))
 					this.PlocY ++;
 			}
+		}
 		
-			if(direction.equals("w"))
+		if(direction.equals("w"))
+		{
+			if(this.PlocY > 0)
 			{
-				if(PlocY > 0)
+				if(this.dungeon[PlocX][PlocY].north == true && (this.dungeon[PlocX][PlocY -1].south == true))
 					this.PlocY --;
 			}
-			if(direction.equals("a"))
+		}
+		
+		if(direction.equals("a"))
+		{
+			if(this.PlocX > 0)
 			{
-				if(PlocX > 0)
+				if(this.dungeon[PlocX][PlocY].west == true && (this.dungeon[PlocX-1][PlocY].east == true))
 					this.PlocX --;
 			}
-				if(direction.equals("d"))
-				{
-					if(PlocX < this.maxX -1)
-						this.PlocX ++;
-				}
-				
-				System.out.println("Player is at [" + PlocX + "]" + "[" + PlocY + "]");
-				printRoom(PlocX, PlocY);
 		}
+		
+		if(direction.equals("d"))
+		{
+			if(this.PlocX < this.maxX -1)
+			{
+				if(this.dungeon[PlocX][PlocY].east == true && (this.dungeon[PlocX+1][PlocY].west == true))
+					this.PlocX ++;
+			}
+		}
+		
+		if(direction.equals("h"))
+		{
+			if(this.healPotions > 0)
+			{
+				System.out.println("You use the healing potion and heal 45 hit points");
+				this.hero.addHitPoints(45);
+				System.out.println("Your total hitpoints are now " + this.hero.getHitPoints());
+				this.healPotions --;
+			}
+		}
+		
+		if(direction.equals("v"))
+		{
+			if(this.visionPotions > 0)
+			{
+				System.out.println("You use the visiong potion and can see all adjacent rooms for one turn");
+			}
+		}
+		
+		if(direction.equals("m")) //Not Correct
+		{
+			System.out.print(dungeon[this.PlocX - 1][this.PlocY + 1].toString() +
+					dungeon[this.PlocX][this.PlocY + 1].toString() + dungeon[this.PlocX + 1][this.PlocY + 1].toString());
+			System.out.print(dungeon[this.PlocX - 1][this.PlocY].toString() + 
+					dungeon[this.PlocX][this.PlocY].toString() + dungeon[this.PlocX + 1][this.PlocY].toString());
+			System.out.print(dungeon[this.PlocX - 1][this.PlocY - 1].toString() +
+					dungeon[this.PlocX][this.PlocY - 1].toString() + dungeon[this.PlocX + 1][this.PlocY - 1].toString());
+		}
+		
+		System.out.println("Player is at [" + PlocX + "]" + "[" + PlocY + "]");
 		
 	}//end traverseDungeon
 	
+	public void useHealPotion(GameCharacter hero)
+	{
+		System.out.println("You drink the healing potion");
+		hero.addHitPoints(45);
+		
+	}//end useHealPotion
+		
+	public void useVisionPotion(GameCharacter hero)
+	{
+		
+	}//end useVisionPotion?
+		
+	//}
 	public void printPosition()
 	{
-		System.out.println(PlocX + " " + PlocY);
+		System.out.println(this.PlocX + " " + this.PlocY);
 		
 	}//end printPosition
 	
 	public void printRoom(int x, int y)
 	{
-		System.out.println(dungeon[x][y].toString());
-		System.out.println(dungeon[x][y].roomStats());
+		System.out.print(this.dungeon[x][y].toString());
 		
 	}//end printRoom
 	
@@ -206,41 +256,30 @@ public class Dungeon
 	{
 		for(int i = 0; i < this.maxX; i ++)
 		{
-		
 			for(int j = 0; j < this.maxY; j++)
 			{
 				if(i == 0)
-				{
-					dungeon[0][j].west = false;
-				}
+					this.dungeon[0][j].west = false;
+				
 				if(i == this.maxX -1 )
-				{
-					dungeon[maxY-1][j].east = false;
-				}
+					this.dungeon[maxY-1][j].east = false;
+				
 				if(j == 0)
-				{
-					dungeon[i][j].north = false;
-				}
+					this.dungeon[i][j].north = false;
+				
 				if(j == this.maxY - 1)
-				{
-					dungeon[i][j].south = false;  
-				}
+					this.dungeon[i][j].south = false;  
+				
 			}
-			
 		}
 		
 	}//end borderiseDungeon
-	
-	public void activateVision()
+
+	public Room[][] getDungeon()
 	{
-		printRoom(PlocX-1,PlocY-1);
-		
-	}//end activateVision
-	
-	public Room[][] getDungeon() 
-	{
-		return dungeon;
+		return this.dungeon;
 		
 	}//end getDungeon
 	
-}
+}//end class
+	

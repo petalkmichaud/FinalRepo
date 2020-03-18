@@ -13,13 +13,7 @@ public abstract class Room {
 	
 	protected double entrance, exit;
 	
-	protected int monsterCount;
-
-	protected int healingPotionCount;
-
-	protected int visionPotionCount;
-
-	protected int pit;
+	protected int monsterCount, healingPotionCount, visionPotionCount, pit;
 	
 	MonsterFactory monsterFactory;
 	GameCharacter monsterC;

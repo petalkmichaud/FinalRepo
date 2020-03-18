@@ -1,5 +1,4 @@
-public class Ogre extends Monster
-{
+public class Ogre extends Monster{
 
     public Ogre(Ability[] flyweightRef)
 	{

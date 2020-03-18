@@ -1,14 +1,15 @@
 
-public class RegularAttack implements Ability //FINISH THIS!
-{
+public class RegularAttack implements Ability {
 
-	public String getDisplay()
-	{
+	@Override
+	public String getDisplay() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public void doAbility(GameCharacter opponent)
-	{
+	@Override
+	public void doAbility(GameCharacter opponent) {
+		
 		
 	}
 	

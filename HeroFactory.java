@@ -1,11 +1,10 @@
-public class HeroFactory extends CharacterFactory
-{
-	public HeroFactory(Ability[] flyweightRef)
-	{
+public class HeroFactory extends CharacterFactory{
+	
+	
+	public HeroFactory(Ability[] flyweightRef) {
 		super(flyweightRef);
 		
-	}//end HeroFactory
-	
+	}
 	public GameCharacter createSorceress()
 	{
 		return new Sorceress(this.flyweightRef);
@@ -35,5 +34,4 @@ public class HeroFactory extends CharacterFactory
 		return new Ranger(this.flyweightRef);
 		
 	}//end createRanger
-	
-}//end class
+}

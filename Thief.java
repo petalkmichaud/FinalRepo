@@ -4,9 +4,18 @@ public class Thief extends Hero
     public Thief(Ability[] flyweightRef)
 	{
 		super(flyweightRef, "Thief", 75, 6, .8, 20, 40, .5);
-
+		this.setAbility(flyweightRef[3]);
+		
     }//end constructor
 
+    @Override
+    public void specialAttack(GameCharacter opponent) {
+    	SurpriseAttack surAttack = (SurpriseAttack)this.getAbility();
+    	surAttack.setThisChar(this);
+    	
+    	surAttack.doAbility(opponent);
+    	
+    }
 	/*public void surpriseAttack(DungeonCharacter opponent)
 	{
 		double surprise = Math.random();

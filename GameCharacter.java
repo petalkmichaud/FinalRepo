@@ -2,6 +2,12 @@
 public abstract class GameCharacter
 {
 	private Ability[] flyweightReference;
+	public Ability[] getFlyweightReference() {
+		return flyweightReference;
+	}
+	
+	
+
 	private Ability regularAttack;
 	protected Ability ability; //Maybe make this private later?
 	private String name;
@@ -14,6 +20,7 @@ public abstract class GameCharacter
 				     double chanceToHit, int damageMin, int damageMax)
 	{
 		this.flyweightReference = flyweightRef;
+	
 		this.regularAttack = flyweightReference[1];
 		this.name = name;
 		this.hitPoints = hitPoints;
@@ -24,12 +31,51 @@ public abstract class GameCharacter
 
 	}//end constructor
 	
-	public Ability[] getFlyweightReference()
-	{
-		return flyweightReference;
-		
-	}//end getFlyweightReference
+	public void setFlyweightReference(Ability[] flyweightReference) {
+		this.flyweightReference = flyweightReference;
+	}
 
+	public Ability getRegularAttack() {
+		return regularAttack;
+	}
+
+	public void setRegularAttack(Ability regularAttack) {
+		this.regularAttack = regularAttack;
+	}
+
+	public Ability getAbility() {
+		return ability;
+	}
+
+	public void setAbility(Ability ability) {
+		this.ability = ability;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setHitPoints(int hitPoints) {
+		this.hitPoints = hitPoints;
+	}
+
+	public void setAttackSpeed(int attackSpeed) {
+		this.attackSpeed = attackSpeed;
+	}
+
+	public void setChanceToHit(double chanceToHit) {
+		this.chanceToHit = chanceToHit;
+	}
+
+	public void setDamageMin(int damageMin) {
+		this.damageMin = damageMin;
+	}
+
+	public void setDamageMax(int damageMax) {
+		this.damageMax = damageMax;
+	}
+	
+	
 	public String getName()
 	{
 		return this.name;
@@ -122,12 +168,8 @@ public abstract class GameCharacter
 		}//end else
 
 	}//end attack method
-    
-    public String getAbilityName()
-    {
+    public String getAbilityName() {
     	return ability.getDisplay();
-    	
-    }//end getAbilityName
-    
+    }
     public abstract void specialAttack(GameCharacter opponent);
 }

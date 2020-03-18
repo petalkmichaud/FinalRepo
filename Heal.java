@@ -3,9 +3,8 @@ public class Heal implements Ability
 {
 	public String getDisplay()
 	{
-		return " uses the special move heal";
-		
-	}//end getDisplay
+		return "Heal";
+		}
 	
 	public void doAbility(GameCharacter thisCharacter)
 	{
@@ -25,11 +24,12 @@ public class Heal implements Ability
 		}
 		else
 		{
+			
 			Monster thisMonster = (Monster)thisCharacter;
 			boolean canHeal;
 			int healPoints;
 
-			canHeal = (Math.random() <= thisMonster.getChanceToHit()) && (thisMonster.getHitPoints() > 0);
+			canHeal = (Math.random() <= thisMonster.getChanceToHeal()) && (thisMonster.getHitPoints() > 0);
 
 			if (canHeal)
 			{
@@ -39,12 +39,9 @@ public class Heal implements Ability
 									+ "Total hit points remaining are: " + thisMonster.getHitPoints());
 				System.out.println();
 			}
-			else
-			{
-				System.out.println( " could not heal this round.");
+			else {
+				System.out.print( " MISSED his chance to heal.");
 			}
 		}
-		
-	}//end doAbility
-	
-}//end class
+	}
+}

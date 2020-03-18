@@ -1,7 +1,31 @@
-
 public abstract class Monster extends GameCharacter //implements Ability
 {
 	private double chanceToHeal;
+	public double getChanceToHeal() {
+		return chanceToHeal;
+	}
+
+	public void setChanceToHeal(double chanceToHeal) {
+		this.chanceToHeal = chanceToHeal;
+	}
+
+	public int getMinHeal() {
+		return minHeal;
+	}
+
+	public void setMinHeal(int minHeal) {
+		this.minHeal = minHeal;
+	}
+
+	public int getMaxHeal() {
+		return maxHeal;
+	}
+
+	public void setMaxHeal(int maxHeal) {
+		this.maxHeal = maxHeal;
+	}
+
+	
 	private int minHeal, maxHeal;
 
 	public Monster(Ability[] flyweightRef, String name, int hitPoints, int attackSpeed,
@@ -13,52 +37,19 @@ public abstract class Monster extends GameCharacter //implements Ability
 		this.chanceToHeal = chanceToHeal;
 		this.maxHeal = maxHeal;
 		this.minHeal = minHeal;
+		this.setAbility(flyweightRef[2]);
 
 	}//end Monster
 	
 	public void specialAttack(GameCharacter thisMonster)
 	{
-		System.out.println(this.getName());
-		this.ability.doAbility((Monster)thisMonster);
-		
+		if(this.isAlive()) {
+		System.out.print(this.getName());
+		this.getAbility().doAbility((Monster)thisMonster);
+		}
 	}//end specialAttack
-	
-	public int getMaxHeal()
-	{
-		return this.maxHeal;
-		
-	}//end getMaxHeal
-	
-	public void setMaxHeal(int maxHeal)
-	{
-		this.maxHeal = maxHeal;
-		
-	}//end setMaxHeal
-	
-	public int getMinHeal()
-	{
-		return this.minHeal;
-		
-	}//end getMinHeal
-	
-	public void setMinHeal(int minHeal)
-	{
-		this.minHeal = minHeal;
-		
-	}//end setMinHeal
-	
-	public double getChanceToHeal()
-	{
-		return chanceToHeal;
-		
-	}//end getChanceToHeal
 
-	public void setChanceToHeal(double chanceToHeal)
-	{
-		this.chanceToHeal = chanceToHeal;
 		
-	}//end setChanceToHeal
-
 	/* public void heal()
   	{
 		boolean canHeal;
@@ -109,6 +100,6 @@ public abstract class Monster extends GameCharacter //implements Ability
 		super.subtractHitPoints(hitPoints);
 		specialAttack(this);
 	
-	}//end subtractHitPoints
+	}//end method
 
 }//end Monster class

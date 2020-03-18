@@ -1,11 +1,12 @@
 public class MonsterFactory extends CharacterFactory
 {
-	public MonsterFactory ( Ability [] flyweightRef)
-	{
+	
+	
+	
+	public MonsterFactory ( Ability [] flyweightRef) {
 		super(flyweightRef);
 		
-	}//end MonsterFactory
-	
+	}
 	public GameCharacter createOgre()
 	{
 		return new Ogre(this.flyweightRef);
@@ -36,4 +37,6 @@ public class MonsterFactory extends CharacterFactory
 		
 	}//end createDrake
 	
-}//end class
+	
+	
+}
