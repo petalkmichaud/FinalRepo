@@ -52,7 +52,9 @@ public class Dungeon
 		
 		dungeon[startX][startY] = new EntranceRoom(true, true, true, true);
 		dungeon[2][4] = new ExitRoom(false, false, true, false);
+		
 		dungeon[0][0] = new EncapsulationPillarRoom((MonsterFactory) monsterFactory,false,false,true,false);
+		
 		dungeon[1][0] = new RegularRoom((MonsterFactory) monsterFactory,false,true,false,true);
 		dungeon[2][0] = new RegularRoom((MonsterFactory) monsterFactory,false,true,true,false);
 		dungeon[3][0] = new RegularRoom((MonsterFactory) monsterFactory,false,true,true,true);
@@ -62,7 +64,9 @@ public class Dungeon
 		dungeon[2][1] = new RegularRoom((MonsterFactory) monsterFactory,true,true,false,true);
 		dungeon[3][1] = new RegularRoom((MonsterFactory) monsterFactory,true,false,true,false);
 		dungeon[4][1] = new RegularRoom((MonsterFactory) monsterFactory,false,true,false,true);
+		
 		dungeon[0][2] = new EncapsulationPillarRoom((MonsterFactory) monsterFactory,false,true,false,false);
+		
 		dungeon[1][2] = new RegularRoom((MonsterFactory) monsterFactory,false,true,false,false);
 		dungeon[2][2] = new RegularRoom((MonsterFactory) monsterFactory,true,true,false,false);
 		dungeon[3][2] = new RegularRoom((MonsterFactory) monsterFactory,false,true,true,false);
@@ -72,8 +76,11 @@ public class Dungeon
 		dungeon[2][3] = new RegularRoom((MonsterFactory) monsterFactory,true,false,true,true);
 		dungeon[3][3] = new RegularRoom((MonsterFactory) monsterFactory,true,false,false,true);
 		dungeon[4][3] = new RegularRoom((MonsterFactory) monsterFactory,true,true,false,false);
+		
 		dungeon[0][4] = new AbstractionPillarRoom((MonsterFactory) monsterFactory,true,false,false,false);
+		
 		dungeon[1][4] = new PolymorphismPillarRoom((MonsterFactory) monsterFactory,true,false,false,false);
+		
 		dungeon[3][4] = new RegularRoom((MonsterFactory) monsterFactory,false,false,true,true);
 		dungeon[4][4] = new RegularRoom((MonsterFactory) monsterFactory,true,false,false,true);
 		
@@ -210,7 +217,7 @@ public class Dungeon
 		{
 			if(this.visionPotions > 0)
 			{
-				System.out.println("You use the visiong potion and can see all adjacent rooms for one turn");
+				System.out.println("You use the vision potion and can see all adjacent rooms for one turn");
 				useVisionPotion();
 				this.visionPotions --;
 			}
@@ -232,14 +239,14 @@ public class Dungeon
 	
 	public void useHealPotion(GameCharacter hero)
 	{
-		System.out.println("You drink the healing potion");
+		System.out.println("drinking potion...");
 		hero.addHitPoints(45);
 		
 	}//end useHealPotion
 		
 	public void useVisionPotion()
 	{
-		System.out.println("You drink the vision potion");
+		System.out.println("drinking potion...");
 		
 		System.out.print(dungeon[this.PlocX - 1][this.PlocY + 1].toString() +
 				dungeon[this.PlocX][this.PlocY + 1].toString() + dungeon[this.PlocX + 1][this.PlocY + 1].toString());
@@ -248,8 +255,7 @@ public class Dungeon
 		System.out.print(dungeon[this.PlocX - 1][this.PlocY - 1].toString() +
 				dungeon[this.PlocX][this.PlocY - 1].toString() + dungeon[this.PlocX + 1][this.PlocY - 1].toString());
 	}//end useVisionPotion
-		
-	//}
+	
 	public void printPosition()
 	{
 		System.out.println(this.PlocX + " " + this.PlocY);

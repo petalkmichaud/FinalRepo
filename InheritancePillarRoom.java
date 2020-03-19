@@ -1,7 +1,6 @@
 
 public class InheritancePillarRoom extends Room
 {
-	public boolean hasBeenFound = true;
 	public InheritancePillarRoom(MonsterFactory monsterFactory, boolean north, boolean south, boolean east,
 			boolean west)
 	{
@@ -9,9 +8,4 @@ public class InheritancePillarRoom extends Room
 		
 	}
 	
-	public boolean getPillar()
-	{
-		return this.hasBeenFound;
-		
-	}//end getPillar
 }
