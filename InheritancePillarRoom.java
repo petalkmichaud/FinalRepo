@@ -5,7 +5,7 @@ public class InheritancePillarRoom extends Room
 			boolean west)
 	{
 		super(monsterFactory, north, south, east, west);
-		
+		super.iPillar = true;
 	}
 	
 }

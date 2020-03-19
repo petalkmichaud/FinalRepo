@@ -5,6 +5,6 @@ public class PolymorphismPillarRoom extends Room
 			boolean west)
 	{
 		super(monsterFactory, north, south, east, west);
-		
+		super.pPillar = true;
 	}
 }

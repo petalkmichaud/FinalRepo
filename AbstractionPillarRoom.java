@@ -5,6 +5,7 @@ public class AbstractionPillarRoom extends Room
 			boolean west)
 	{
 		super(monsterFactory, north, south, east, west);
+		super.aPillar = true;
 		
 	}
 	

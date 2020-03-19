@@ -97,9 +97,9 @@ public class DungeonAdventure
 					dungeon.getDungeon()[x][y].aPillar = false;
 				}
 				
-				if(dungeon.getDungeon()[x][y].isExit() == true && dungeon.getDungeon()[x][y].pPillar == false &&
-						dungeon.getDungeon()[x][y].ePillar == false && dungeon.getDungeon()[x][y].iPillar == false
-						&& dungeon.getDungeon()[x][y].aPillar == false)
+				if(dungeon.getDungeon()[x][y].isExit() == true && dungeon.getDungeon()[x][y].pPillar == true &&
+						dungeon.getDungeon()[x][y].ePillar == true && dungeon.getDungeon()[x][y].iPillar == true
+						&& dungeon.getDungeon()[x][y].aPillar == true)
 				{
 					System.out.println("You have made it to the exit with all of the Pillars of OO in tow!");
 					System.out.println("Congratulations, you win!");

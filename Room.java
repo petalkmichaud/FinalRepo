@@ -15,7 +15,7 @@ public abstract class Room
 	
 	protected int monsterCount, healingPotionCount, visionPotionCount, pit;
 	
-	protected boolean pPillar = true, aPillar = true, ePillar = true, iPillar = true;
+	protected boolean pPillar = false, aPillar = false, ePillar = false, iPillar = false;
 	
 	MonsterFactory monsterFactory;
 	GameCharacter monsterC;
