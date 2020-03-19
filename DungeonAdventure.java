@@ -63,7 +63,7 @@ public class DungeonAdventure
 					dungeon.getDungeon()[x][y].visionPotionCount = 0;
 				}
 				
-				if(dungeon.getDungeon()[x][y].pit >=1 )
+				if(dungeon.getDungeon()[x][y].pit >= 1 )
 				{
 					System.out.println("fell in to a pit");
 					dungeon.printRoom(x, y);
@@ -71,6 +71,43 @@ public class DungeonAdventure
 					hero.subtractHitPoints(15);
 					
 					dungeon.getDungeon()[x][y].pit = 0;
+				}
+				
+				if(dungeon.getDungeon()[x][y].isPPillarRoom() == true)
+				{
+					System.out.println("You found the Pillar of Polymorphism!");
+					dungeon.getDungeon()[x][y].pPillar = false;
+					dungeon.getDungeon()[2][4].pPillar = true;
+				}
+				
+				if(dungeon.getDungeon()[x][y].isIPillarRoom() == true)
+				{
+					System.out.println("You found the Pillar of Inheritance!");
+					dungeon.getDungeon()[x][y].iPillar = false;
+					dungeon.getDungeon()[2][4].iPillar = true;
+				}
+				
+				if(dungeon.getDungeon()[x][y].isEPillarRoom() == true)
+				{
+					System.out.println("You found the Pillar of Encapsulation!");
+					dungeon.getDungeon()[x][y].ePillar = false;
+					dungeon.getDungeon()[2][4].ePillar = true;
+				}
+				
+				if(dungeon.getDungeon()[x][y].isAPillarRoom() == true)
+				{
+					System.out.println("You found the Pillar of Abstraction!");
+					dungeon.getDungeon()[x][y].aPillar = false;
+					dungeon.getDungeon()[2][4].aPillar = true;
+				}
+				
+				if(dungeon.getDungeon()[x][y].isExit() == true && dungeon.getDungeon()[x][y].pPillar == true &&
+						dungeon.getDungeon()[x][y].ePillar == true && dungeon.getDungeon()[x][y].iPillar == true
+						&& dungeon.getDungeon()[x][y].aPillar == true)
+				{
+					System.out.println("You have made it to the exit with all of the Pillars of OO in tow!");
+					System.out.println("Congratulations, you win!");
+					System.exit(0);
 				}
 				
 				dungeon.traverseDungeon();
@@ -93,7 +130,9 @@ public class DungeonAdventure
 		Scanner input = new Scanner(System.in);
 		Hero hero;
 		int selection;
-		System.out.println("Welcome to the adventure of a life time....\n\n");
+		System.out.println("Welcome to the adventure of a life time...");
+		System.out.println("Here you will battle monsters and overcome obstacles to locate the pillars of OO!");
+		System.out.println("Once you find the pillars, take them to the exit in order to win the game! \n\n");
 		System.out.println("Please choose a hero: ");
 		System.out.println("1: Sorceress");
 		System.out.println("2: Warrior");

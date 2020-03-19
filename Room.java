@@ -1,12 +1,12 @@
 
-
-public abstract class Room {
+public abstract class Room
+{
 	
 	protected boolean north,south,east,west;
 	
 	protected double monsterChance;
 	
-	protected double roomConstant = .3;
+	protected double roomConstant = .1;
 	protected double pitChance = roomConstant;
 	protected double healingPotionChance = roomConstant;
 	protected double visionPotionChance = roomConstant;
@@ -14,6 +14,8 @@ public abstract class Room {
 	protected double entrance, exit;
 	
 	protected int monsterCount, healingPotionCount, visionPotionCount, pit;
+	
+	protected boolean pPillar = false, aPillar = false, ePillar = false, iPillar = false;
 	
 	MonsterFactory monsterFactory;
 	GameCharacter monsterC;
@@ -31,7 +33,6 @@ public abstract class Room {
 			this.pit = getPit();
 			this.healingPotionCount = getHealingPotion();
 			this.visionPotionCount = getVisionPotion();
-			
 			
 		}
 		
@@ -106,24 +107,64 @@ public abstract class Room {
 			}
 			return visionPotion;
 		}
-	
 		
-		public boolean isEntrance() {
+		public boolean isPPillarRoom()
+		{
+			if(this.pPillar == true)
+				return true;
+			else
+				return false;
 			
-			if(this.entrance > 0) {
-				return true;
-			}
-			else return false;
-		}
+		}//end isPPillarRoom
 		
-		public boolean isExit() {
-			if(this.exit > 0) {
+		public boolean isAPillarRoom()
+		{
+			if(this.aPillar == true)
 				return true;
-			}
-			else return false;
-		}
+			else
+				return false;
+			
+		}//end isAPillarRoom
 		
-		public String toString() {
+		public boolean isEPillarRoom()
+		{
+			if(this.ePillar == true)
+				return true;
+			else
+				return false;
+			
+		}//end isEPillarRoom
+		
+		public boolean isIPillarRoom()
+		{
+			if(this.iPillar == true)
+				return true;
+			else
+				return false;
+			
+		}//end isIPillarRoom
+		
+		public boolean isEntrance()
+		{
+			
+			if(this.entrance > 0)
+				return true;
+			else
+				return false;
+			
+		}//end isEntrance
+		
+		public boolean isExit()
+		{
+			if(this.exit > 0)
+				return true;
+			else
+				return false;
+			
+		}//end isExit
+		
+		public String toString()
+		{
 			String room = "";
 			if(this.north == false) {
 				room = room + "***";
@@ -142,18 +183,18 @@ public abstract class Room {
 			
 			if((monsterCount + pit + healingPotionCount + visionPotionCount) == 0) {
 				
-				if(this.isExit()) {
+				if(this.isExit())
 					room = room + "O";
-				}
-				else if(this.isEntrance()) {
+				
+				else if(this.isEntrance())
 					room = room + "I";
-				}
+				
+				else if(this.isAPillarRoom() || this.isPPillarRoom() ||
+						this.isEPillarRoom() || this.isIPillarRoom())
+					room = room + "P";
 				
 				else
-				{
-				
-				room = room + "E";
-				}
+					room = room + "E";
 				
 				
 				
@@ -190,7 +231,7 @@ public abstract class Room {
 				room = room + "***";
 			}
 			else {
-				room = room + "*-*";
+				room = room + "*-*\n";
 			}
 			return room;
 		}
