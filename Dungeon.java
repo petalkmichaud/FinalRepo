@@ -256,12 +256,16 @@ public class Dungeon
 	{
 		System.out.println("drinking potion...");
 		
-		System.out.print(dungeon[this.PlocX - 1][this.PlocY + 1].toString() +
-				dungeon[this.PlocX][this.PlocY + 1].toString() + dungeon[this.PlocX + 1][this.PlocY + 1].toString());
-		System.out.print(dungeon[this.PlocX - 1][this.PlocY].toString() + 
-				dungeon[this.PlocX][this.PlocY].toString() + dungeon[this.PlocX + 1][this.PlocY].toString());
-		System.out.print(dungeon[this.PlocX - 1][this.PlocY - 1].toString() +
-				dungeon[this.PlocX][this.PlocY - 1].toString() + dungeon[this.PlocX + 1][this.PlocY - 1].toString());
+		
+		
+		int[][] value = new int[5][5];
+		
+		if(PlocX < 0 ) {
+			
+		}
+		
+		
+		
 	}//end useVisionPotion
 	
 	public void printPosition()

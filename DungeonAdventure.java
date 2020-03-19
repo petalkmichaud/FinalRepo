@@ -32,7 +32,7 @@ public class DungeonAdventure
 				System.out.println();
 			//	System.out.println(dungeon.getDungeon()[x][y].roomStats());;
 				if(dungeon.getDungeon()[x][y].monsterCount >=1 ) {
-					System.out.println("fighting...");
+				//	System.out.println("fighting...");
 					dungeon.printRoom(x, y);
 					boolean won = battle(hero,dungeon.getDungeon()[x][y].monsterC);
 					
@@ -123,6 +123,7 @@ public class DungeonAdventure
 		
 	}//end main
 	
+	
 	public static Hero selectHero(Ability[] flyweight)
 	{
 		
@@ -203,7 +204,9 @@ public class DungeonAdventure
 				System.out.println("invalid menu choice, defaulting to attack..");
 				hero.attack(monster);
 			}
-			monster.attack(hero);
+			if(monster.isAlive()) {
+				monster.attack(hero);
+			}
 			
 		}
 		return hero.isAlive();
