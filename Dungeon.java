@@ -50,7 +50,7 @@ public class Dungeon
 		
 		//hardcoded doors
 		
-		dungeon[startX][startY] = new EntranceRoom(true, true, true, true);
+		
 		dungeon[2][4] = new ExitRoom(false, false, true, false);
 		
 		dungeon[0][0] = new EncapsulationPillarRoom((MonsterFactory) monsterFactory,false,false,true,false);
@@ -65,7 +65,7 @@ public class Dungeon
 		dungeon[3][1] = new RegularRoom((MonsterFactory) monsterFactory,true,false,true,false);
 		dungeon[4][1] = new RegularRoom((MonsterFactory) monsterFactory,false,true,false,true);
 		
-		dungeon[0][2] = new EncapsulationPillarRoom((MonsterFactory) monsterFactory,false,true,false,false);
+		dungeon[0][2] = new InheritancePillarRoom((MonsterFactory) monsterFactory,false,true,false,false);
 		
 		dungeon[1][2] = new RegularRoom((MonsterFactory) monsterFactory,false,true,false,false);
 		dungeon[2][2] = new RegularRoom((MonsterFactory) monsterFactory,true,true,false,false);
@@ -84,17 +84,25 @@ public class Dungeon
 		dungeon[3][4] = new RegularRoom((MonsterFactory) monsterFactory,false,false,true,true);
 		dungeon[4][4] = new RegularRoom((MonsterFactory) monsterFactory,true,false,false,true);
 		
-		Room tempRoom = dungeon[startX][startY];
-		boolean tempN = tempRoom.north;
-		boolean tempS = tempRoom.south;
-		boolean tempE = tempRoom.east;
-		boolean tempW = tempRoom.west;
+		boolean sentry = true;
+		while(sentry) {
 		
-		this.dungeon[startX][startY] = new EntranceRoom(tempN,tempS,tempE,tempW);
+		if(dungeon[startX][startY] instanceof RegularRoom) {
+			boolean tempN = dungeon[startX][startY].north;
+			boolean tempS = dungeon[startX][startY].south;
+			boolean tempE = dungeon[startX][startY].east;
+			boolean tempW = dungeon[startX][startY].west;
+			
+			dungeon[startX][startY] = new EntranceRoom(tempN, tempS, tempE, tempW);
+			sentry = false;	
+		}else {
+			startX = getRandomX(maxX);
+			startY = getRandomY(maxY);
+		}
 		
-		borderiseDungeon();
 	}
-	
+		borderiseDungeon();
+}
 	public void setDungeonHero(GameCharacter hero)
 	{
 		this.hero = hero;

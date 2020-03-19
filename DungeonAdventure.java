@@ -77,24 +77,28 @@ public class DungeonAdventure
 				{
 					System.out.println("You found the Pillar of Polymorphism!");
 					dungeon.getDungeon()[x][y].pPillar = false;
+					dungeon.getDungeon()[2][4].pPillar = true;
 				}
 				
 				if(dungeon.getDungeon()[x][y].isIPillarRoom() == true)
 				{
 					System.out.println("You found the Pillar of Inheritance!");
 					dungeon.getDungeon()[x][y].iPillar = false;
+					dungeon.getDungeon()[2][4].iPillar = true;
 				}
 				
 				if(dungeon.getDungeon()[x][y].isEPillarRoom() == true)
 				{
 					System.out.println("You found the Pillar of Encapsulation!");
 					dungeon.getDungeon()[x][y].ePillar = false;
+					dungeon.getDungeon()[2][4].ePillar = true;
 				}
 				
 				if(dungeon.getDungeon()[x][y].isAPillarRoom() == true)
 				{
 					System.out.println("You found the Pillar of Abstraction!");
 					dungeon.getDungeon()[x][y].aPillar = false;
+					dungeon.getDungeon()[2][4].aPillar = true;
 				}
 				
 				if(dungeon.getDungeon()[x][y].isExit() == true && dungeon.getDungeon()[x][y].pPillar == true &&
