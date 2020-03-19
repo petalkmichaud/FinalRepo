@@ -6,7 +6,7 @@ public abstract class Room {
 	
 	protected double monsterChance;
 	
-	protected double roomConstant = .1;
+	protected double roomConstant = .3;
 	protected double pitChance = roomConstant;
 	protected double healingPotionChance = roomConstant;
 	protected double visionPotionChance = roomConstant;
@@ -190,7 +190,7 @@ public abstract class Room {
 				room = room + "***";
 			}
 			else {
-				room = room + "*-*\n";
+				room = room + "*-*";
 			}
 			return room;
 		}

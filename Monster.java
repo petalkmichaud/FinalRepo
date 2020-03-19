@@ -43,9 +43,10 @@ public abstract class Monster extends GameCharacter //implements Ability
 	
 	public void specialAttack(GameCharacter thisMonster)
 	{
+		if(this.isAlive()) {
 		System.out.print(this.getName());
 		this.getAbility().doAbility((Monster)thisMonster);
-		
+		}
 	}//end specialAttack
 
 		

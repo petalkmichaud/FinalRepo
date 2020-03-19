@@ -27,7 +27,7 @@ public abstract class DungeonCharacter  {
 	
 	
 	public void attack(DungeonCharacter opponent) {
-		
+			if(this.hitPoints > 0) {
 			boolean canAttack;
 			int damage;
 			canAttack = Math.random() <= chanceToHit;
@@ -42,7 +42,7 @@ public abstract class DungeonCharacter  {
 				System.out.println();
 			}//end else
 
-		}//end attack method
+		}}//end attack method
 		
 	
 	public abstract void specialAttack(DungeonCharacter opponent);
