@@ -1,6 +1,6 @@
 
-
-public abstract class Room {
+public abstract class Room
+{
 	
 	protected boolean north,south,east,west;
 	
@@ -14,6 +14,8 @@ public abstract class Room {
 	protected double entrance, exit;
 	
 	protected int monsterCount, healingPotionCount, visionPotionCount, pit;
+	
+	protected boolean pPillar, aPillar, ePillar, iPillar;
 	
 	MonsterFactory monsterFactory;
 	GameCharacter monsterC;
@@ -31,7 +33,6 @@ public abstract class Room {
 			this.pit = getPit();
 			this.healingPotionCount = getHealingPotion();
 			this.visionPotionCount = getVisionPotion();
-			
 			
 		}
 		

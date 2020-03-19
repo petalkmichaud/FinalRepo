@@ -63,7 +63,7 @@ public class DungeonAdventure
 					dungeon.getDungeon()[x][y].visionPotionCount = 0;
 				}
 				
-				if(dungeon.getDungeon()[x][y].pit >=1 )
+				if(dungeon.getDungeon()[x][y].pit >= 1 )
 				{
 					System.out.println("fell in to a pit");
 					dungeon.printRoom(x, y);
@@ -93,7 +93,9 @@ public class DungeonAdventure
 		Scanner input = new Scanner(System.in);
 		Hero hero;
 		int selection;
-		System.out.println("Welcome to the adventure of a life time....\n\n");
+		System.out.println("Welcome to the adventure of a life time...");
+		System.out.println("Here you will battle monsters and overcome obstacles to locate the pillars of OO!");
+		System.out.println("Once you find the pillars, take them to the exit in order to win the game! \n\n");
 		System.out.println("Please choose a hero: ");
 		System.out.println("1: Sorceress");
 		System.out.println("2: Warrior");

@@ -1,9 +1,12 @@
 
-public abstract class CharacterFactory {
-	Ability[] flyweightRef;
+public abstract class CharacterFactory
+{
+	protected Ability[] flyweightRef;
 	
-	CharacterFactory(Ability[] flyweightRef){
+	public CharacterFactory(Ability[] flyweightRef)
+	{
 		this.flyweightRef = flyweightRef;
 		
-	}
-}
+	}//end CharacterFactory
+	
+}//end class
