@@ -1,7 +1,9 @@
 import java.util.Scanner;
 
-public class DungeonAdventure {
-	public static void main(String args[]) {
+public class DungeonAdventure
+{
+	public static void main(String args[])
+	{
 		Ability[] flyweight = new Ability[5];
 		flyweight[0] = new RegularAttack();
 		flyweight[3] = new SurpriseAttack();
@@ -12,9 +14,13 @@ public class DungeonAdventure {
 		
 		boolean isPlaying = true;
 		
-		while(isPlaying) {
+		while(isPlaying)
+		{
 			Hero hero = (Hero)selectHero(flyweight);
 			Dungeon dungeon = new Dungeon(5,5);
+			
+			dungeon.setDungeonHero(hero);
+			
 			boolean heroIsAlive = true;
 			while(heroIsAlive) {
 				int x = dungeon.PlocX;
@@ -33,10 +39,44 @@ public class DungeonAdventure {
 					dungeon.getDungeon()[x][y].monsterCount = 0;
 					heroIsAlive = won;
 				}
+				if(dungeon.getDungeon()[x][y].healingPotionCount >=1 )
+				{
+					System.out.println("found a healing potion");
+					dungeon.printRoom(x, y);
+					
+					dungeon.healPotions = dungeon.healPotions + 1;
+					
+					System.out.println("You now have " + dungeon.healPotions + " healing potions in your inventory");
+					
+					dungeon.getDungeon()[x][y].healingPotionCount = 0;
+				}
+				
+				if(dungeon.getDungeon()[x][y].visionPotionCount >=1 )
+				{
+					System.out.println("found a vision potion");
+					dungeon.printRoom(x, y);
+					
+					dungeon.visionPotions = dungeon.visionPotions + 1;
+					
+					System.out.println("You now have " + dungeon.visionPotions + " vision potions in your inventory");
+					
+					dungeon.getDungeon()[x][y].visionPotionCount = 0;
+				}
+				
+				if(dungeon.getDungeon()[x][y].pit >=1 )
+				{
+					System.out.println("fell in to a pit");
+					dungeon.printRoom(x, y);
+					
+					hero.subtractHitPoints(15);
+					
+					dungeon.getDungeon()[x][y].pit = 0;
+				}
+				
 				dungeon.traverseDungeon();
 			}
 			
-			System.out.println("Game over you, died and where not successfull in completing the objectives \n Play Again? (y)(n)");
+			System.out.println("Game over you, died and were not successfull in completing the objectives \n Play Again? (y)(n)");
 			Scanner input = new Scanner(System.in);
 			if(input.next().equals("n")) {
 				isPlaying = false;
@@ -44,9 +84,10 @@ public class DungeonAdventure {
 		}
 		
 		
-	}
+	}//end main
 	
-	public static Hero selectHero(Ability[] flyweight) {
+	public static Hero selectHero(Ability[] flyweight)
+	{
 		
 		HeroFactory factory = new HeroFactory(flyweight);
 		Scanner input = new Scanner(System.in);
@@ -62,27 +103,33 @@ public class DungeonAdventure {
 		
 		selection = input.nextInt();
 		
-		if(selection == 1) {
+		if(selection == 1)
+		{
 			hero = (Hero)factory.createSorceress();
 			System.out.println("You have selected Sorceress");
 		}
-		else if(selection == 2) {
+		else if(selection == 2)
+		{
 			hero = (Hero)factory.createWarrior();
 			System.out.println("You have selected Warrior");
 		}
-		else if(selection == 3) {
+		else if(selection == 3)
+		{
 			hero = (Hero)factory.createThief();
 			System.out.println("You have selected Theif");
 		}
-		else if(selection == 4) {
+		else if(selection == 4)
+		{
 			hero = (Hero)factory.createCleric();
 			System.out.println("You have selected Cleric");
 		}
-		else if(selection == 5) {
+		else if(selection == 5)
+		{
 			hero = (Hero)factory.createRanger();
 			System.out.println("You have selected Ranger");
 		}
-		else {
+		else
+		{
 			System.out.println("You did not pick a menu item, defaulting to Warrior");
 			hero = (Hero)factory.createWarrior();
 			
@@ -91,25 +138,29 @@ public class DungeonAdventure {
 		return hero;
 		
 	}
-	public static boolean battle(GameCharacter hero, GameCharacter monster) {
+	
+	public static boolean battle(GameCharacter hero, GameCharacter monster)
+	{
 		System.out.println("\n*********PREPARE FOR BATTLE*********");
 		System.out.println("You have encountred " + monster.getName());
 		
-		while(hero.isAlive() && monster.isAlive()) {
+		while(hero.isAlive() && monster.isAlive())
+		{
 			int option = battleOption(hero);
-			if(option == 1) {
+			if(option == 1)
 				hero.attack(monster);
-			}
-			else if(option == 2) {
+			
+			else if(option == 2)
+			{
 				
-				if(hero.getAbilityName().equals("Heal")) {
+				if(hero.getAbilityName().equals("Heal"))
 					hero.specialAttack(hero);
-				}
-				else {
+				
+				else
 					hero.specialAttack(monster);
-				}
 			}
-			else {
+			else
+			{
 				System.out.println("invalid menu choice, defaulting to attack..");
 				hero.attack(monster);
 			}
@@ -118,12 +169,14 @@ public class DungeonAdventure {
 		}
 		return hero.isAlive();
 	}
-	public static int battleOption(GameCharacter hero) {
+	
+	public static int battleOption(GameCharacter hero)
+	{
 		Scanner input = new Scanner(System.in);
 		System.out.println("Select a battle option:");
 		System.out.println("1: Attack");
 		System.out.println("2: " + hero.getAbilityName());
 		int option = input.nextInt();
 		return option;
-		}
+	}
 }

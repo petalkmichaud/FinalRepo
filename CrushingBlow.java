@@ -6,7 +6,7 @@ public class CrushingBlow implements Ability
 	
 	public String getDisplay()
 	{
-		return " uses the special aattack crushing blow";
+		return " uses the special attack crushing blow";
 	}
 
 	public void doAbility(GameCharacter opponent)
